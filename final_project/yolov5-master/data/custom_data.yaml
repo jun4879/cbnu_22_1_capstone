@@ -1,0 +1,5 @@
+train: ../data/data_ver_2/train
+val: ../data/data_ver_2/valid
+
+nc: 2 # person file 제외 확인 필요
+names: ['head', 'helmet'] # person file 제외 확인 필요
