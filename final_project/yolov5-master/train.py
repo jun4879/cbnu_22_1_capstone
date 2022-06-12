@@ -21,7 +21,7 @@ import time
 from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
-
+import gc
 import numpy as np
 import torch
 import torch.distributed as dist
@@ -31,6 +31,11 @@ from torch.cuda import amp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.optim import SGD, Adam, AdamW, lr_scheduler
 from tqdm import tqdm
+
+# memory error issue 추가
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+gc.collect()
+torch.cuda.empty_cache()
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
